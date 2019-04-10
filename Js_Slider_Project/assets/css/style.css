@@ -22,8 +22,6 @@
     align-items: center;
     top: 0px;
     bottom: 0px;
-    transform: translateX(0px);
-    transition: transform 0.8s ease 0s;
 }
 
 .slider__image {
@@ -38,21 +36,11 @@
     box-sizing: border-box;
 }
 
-#button--effect:focus {
+.button--effect:focus {
     background-color: #008CBA;
 }
-#button--no-effect:focus {
-    background-color: green;
-}
-#button--no-effect {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #4CAF50;
-    padding: 20px;
-    font-size: 18px;
-}
 
-#button--effect {
+.button--effect {
     background-color: white; 
     color: black; 
     border: 2px solid #008CBA;
