@@ -73,11 +73,11 @@ document.querySelectorAll(".button--effect").forEach((effectButton, index) => {
         switch(index) {
             case 0:
                 isEffect = true;
-                console.log("effect yes: ", isEffect)
+                console.log("effects: ", isEffect)
                 break;
             case 1:
                 isEffect = false;
-                console.log("effect no: ", isEffect)
+                console.log("effects: ", isEffect)
                 break;
             default:
                 isEffect = false;
@@ -86,6 +86,26 @@ document.querySelectorAll(".button--effect").forEach((effectButton, index) => {
     });
 });
 
+document.addEventListener('keyup', function (event) {
+    if(event.keyCode === 39) {
+        if(isEffect){
+            imageTrack.style.transform = `translateX(${goRight()}px)`;
+            imageTrack.style.transition = `transform 0.8s ease 0s`;
+        } else if(!isEffect) {
+            imageTrack.style.transform = `translateX(${goRight()}px)`;
+            imageTrack.style.transition = `transform 0s ease 0s`;
+        }
+    }
+    if(event.keyCode === 37) {
+        if(isEffect) {
+            imageTrack.style.transform = `translateX(${goLeft()}px)`;
+            imageTrack.style.transition = `transform 0.8s ease 0s`;
+        } else if(!isEffect) {
+            imageTrack.style.transform = `translateX(${goLeft()}px)`;
+            imageTrack.style.transition = `transform 0s ease 0s`;
+        }
+    }
+});
 
 /**
  * Tests wie CloneNode() Funktion angewendet wird.
