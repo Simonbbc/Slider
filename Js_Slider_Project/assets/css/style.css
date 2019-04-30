@@ -47,6 +47,7 @@
     border: 2px solid #008CBA;
     padding: 20px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 
@@ -62,6 +63,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .button__swipe--left {
@@ -85,25 +87,23 @@
     opacity: 0;
 }
 
-@keyframes fadeout{
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+.slider__dot {
+    background-color: #bbb;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.5s ease all;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
-.slider__image--fadein {
-    animation-name: fadein;
-    animation-duration: 0.8s;
+.slider__dot:hover {
+    background: #717171;
+    transform: scale(1.2);
+    transform-origin: center center;
 }
 
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.active {
+    background: #717171;
 }

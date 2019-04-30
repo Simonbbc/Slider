@@ -6,6 +6,7 @@ let imageIndex = 0;
 const imageTrack = document.querySelector(".slider__track");
 const imageContainer = document.querySelector(".slider__container");
 const images = document.querySelectorAll(".slider__image");
+const dots = document.querySelectorAll(".slider__dot");
 /**
  * Zuerst holen wir uns die Beiden Knöpfe, welche da sind um im Slider zu navigieren (button__swipe).
  * Danach binden wir den Knöpfen einen Click Listener an.
@@ -23,42 +24,54 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                 if(effect.includes("slide")) {
                     imageTrack.style.transform = `translateX(${goRight()}px)`;
                     imageTrack.style.transition = `transform 0.8s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex += 1;
+                    dots[imageIndex].classList.toggle("active");
                 } else if (effect.includes("fade")) {
                     if(imageIndex < 4) {
                         images[imageIndex].classList.toggle("slider__image--fade");
                         window.setTimeout(function () {
                             imageTrack.style.transform = `translateX(${goRight()}px)`;
                             imageTrack.style.transition = `transform 0s ease 0s`;
+                            dots[imageIndex].classList.toggle("active");
                             imageIndex += 1;
                             images[imageIndex].classList.toggle("slider__image--fade");
+                            dots[imageIndex].classList.toggle("active");
                         }, 1800);
                     }
                 } else {
                     imageTrack.style.transform = `translateX(${goRight()}px)`;
                     imageTrack.style.transition = `transform 0s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex += 1;
+                    dots[imageIndex].classList.toggle("active");
                 }
                 break;
             case 0:
                 if(effect.includes("slide")) {
                     imageTrack.style.transform = `translateX(${goLeft()}px)`;
                     imageTrack.style.transition = `transform 0.8s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex -= 1;
+                    dots[imageIndex].classList.toggle("active");
                 } else if (effect.includes("fade")) {
                     if(imageIndex > 0) {
                         images[imageIndex].classList.toggle("slider__image--fade");
                         window.setTimeout(function () {
                             imageTrack.style.transform = `translateX(${goLeft()}px)`;
                             imageTrack.style.transition = `transform 0s ease 0s`;
+                            dots[imageIndex].classList.toggle("active");
                             imageIndex -= 1;
                             images[imageIndex].classList.toggle("slider__image--fade");
+                            dots[imageIndex].classList.toggle("active");
                         }, 1800);
                     }
                 } else {
                     imageTrack.style.transform = `translateX(${goLeft()}px)`;
                     imageTrack.style.transition = `transform 0s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex -= 1;
+                    dots[imageIndex].classList.toggle("active");
                 }
                 break;
             default:
@@ -175,3 +188,9 @@ document.addEventListener('keyup', function (event) {
         }
     }
 });
+
+// document.querySelectorAll(".slider__dot").forEach((dot, index) => {
+    
+//     dot.addEventListener('click', function () {
+//     });
+// });
