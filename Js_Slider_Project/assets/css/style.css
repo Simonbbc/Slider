@@ -34,6 +34,7 @@
     box-shadow: -5px -5px 5px #E6E6E6;
     */
     box-sizing: border-box;
+    transition: ease all 1.8s;
 }
 
 .button--effect:focus {
@@ -47,6 +48,7 @@
     padding: 20px;
     font-size: 18px;
 }
+
 
 .button__swipe {
     width: 30px;
@@ -74,34 +76,34 @@
     position: relative;
 }
 
-.img--fadeout {
+.slider__image--fadeout {
     animation-name: fadeout;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
 }
 
-.img--fadein {
-    animation-duration: 4s;
-    animation-name: fadein;
-    animation-fill-mode: forwards;
+.slider__image--fade {
+    opacity: 0;
 }
-  
-@keyframes fadein {
-    from {
-       opacity: 0;
-    }
 
-    to {
-       opacity: 1;
-    }
-} 
-
-@keyframes fadeout {
+@keyframes fadeout{
     from {
         opacity: 1;
     }
-
     to {
         opacity: 0;
     }
-} 
+}
+
+.slider__image--fadein {
+    animation-name: fadein;
+    animation-duration: 0.8s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
