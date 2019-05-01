@@ -27,6 +27,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                     imageTrack.style.transition = `transform 0.8s ease 0s`;
                     dots[imageIndex].classList.toggle("active");
                     imageIndex += 1;
+                    currentDot += 1;
                     dots[imageIndex].classList.toggle("active");
                 } else if (effect.includes("fade")) {
                     if(imageIndex < 4) {
@@ -46,6 +47,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                     imageTrack.style.transition = `transform 0s ease 0s`;
                     dots[imageIndex].classList.toggle("active");
                     imageIndex += 1;
+                    currentDot += 1;
                     dots[imageIndex].classList.toggle("active");
                 }
                 break;
@@ -55,6 +57,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                     imageTrack.style.transition = `transform 0.8s ease 0s`;
                     dots[imageIndex].classList.toggle("active");
                     imageIndex -= 1;
+                    currentDot -= 1;
                     dots[imageIndex].classList.toggle("active");
                 } else if (effect.includes("fade")) {
                     if(imageIndex > 0) {
@@ -74,6 +77,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                     imageTrack.style.transition = `transform 0s ease 0s`;
                     dots[imageIndex].classList.toggle("active");
                     imageIndex -= 1;
+                    currentDot -= 1;
                     dots[imageIndex].classList.toggle("active");
                 }
                 break;
@@ -154,6 +158,7 @@ document.addEventListener('keyup', function (event) {
             imageTrack.style.transition = `transform 0.8s ease 0s`;
             dots[imageIndex].classList.toggle("active");
             imageIndex += 1;
+            currentDot += 1;
             dots[imageIndex].classList.toggle("active");
         } else if(effect.includes("fade")) {
             if(imageIndex < 4) {
@@ -173,6 +178,7 @@ document.addEventListener('keyup', function (event) {
             imageTrack.style.transition = `transform 0s ease 0s`;
             dots[imageIndex].classList.toggle("active");
             imageIndex += 1;
+            currentDot += 1;
             dots[imageIndex].classList.toggle("active");
         }
     }
@@ -182,6 +188,7 @@ document.addEventListener('keyup', function (event) {
             imageTrack.style.transition = `transform 0.8s ease 0s`;
             dots[imageIndex].classList.toggle("active");
             imageIndex -= 1;
+            currentDot -= 1;
             dots[imageIndex].classList.toggle("active");
         } else if(effect.includes("fade")) {
             if(imageIndex > 0) {
@@ -201,6 +208,7 @@ document.addEventListener('keyup', function (event) {
             imageTrack.style.transition = `transform 0s ease 0s`;
             dots[imageIndex].classList.toggle("active");
             imageIndex -= 1;
+            currentDot -= 1;
             dots[imageIndex].classList.toggle("active");
         }
     }
