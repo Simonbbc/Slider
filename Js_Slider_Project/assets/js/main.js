@@ -3,6 +3,7 @@
 let currentPosX = 0;
 let effect = "";
 let imageIndex = 0;
+let currentDot = 0;
 const imageTrack = document.querySelector(".slider__track");
 const imageContainer = document.querySelector(".slider__container");
 const images = document.querySelectorAll(".slider__image");
@@ -35,6 +36,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                             imageTrack.style.transition = `transform 0s ease 0s`;
                             dots[imageIndex].classList.toggle("active");
                             imageIndex += 1;
+                            currentDot += 1;
                             images[imageIndex].classList.toggle("slider__image--fade");
                             dots[imageIndex].classList.toggle("active");
                         }, 1800);
@@ -62,6 +64,7 @@ document.querySelectorAll(".button__swipe").forEach((swiperButton, index) => {
                             imageTrack.style.transition = `transform 0s ease 0s`;
                             dots[imageIndex].classList.toggle("active");
                             imageIndex -= 1;
+                            currentDot -= 1;
                             images[imageIndex].classList.toggle("slider__image--fade");
                             dots[imageIndex].classList.toggle("active");
                         }, 1800);
@@ -123,7 +126,7 @@ document.querySelectorAll(".button--effect").forEach((effectButton, index) => {
                 effect = "fade";
                 console.log(imageIndex);
                 images.forEach((image, index) => {
-                    if(index != 0 && index != imageIndex) {   
+                    if(index != imageIndex) {   
                         image.classList.toggle("slider__image--fade");  
                     }
                 });
@@ -149,48 +152,180 @@ document.addEventListener('keyup', function (event) {
         if(effect.includes("slide")){
             imageTrack.style.transform = `translateX(${goRight()}px)`;
             imageTrack.style.transition = `transform 0.8s ease 0s`;
+            dots[imageIndex].classList.toggle("active");
             imageIndex += 1;
+            dots[imageIndex].classList.toggle("active");
         } else if(effect.includes("fade")) {
             if(imageIndex < 4) {
                 images[imageIndex].classList.toggle("slider__image--fade");
                 window.setTimeout(function () {
                     imageTrack.style.transform = `translateX(${goRight()}px)`;
                     imageTrack.style.transition = `transform 0s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex += 1;
+                    currentDot += 1;
                     images[imageIndex].classList.toggle("slider__image--fade");
+                    dots[imageIndex].classList.toggle("active");
                 }, 1800);
             }
         } else {
             imageTrack.style.transform = `translateX(${goRight()}px)`;
             imageTrack.style.transition = `transform 0s ease 0s`;
+            dots[imageIndex].classList.toggle("active");
             imageIndex += 1;
+            dots[imageIndex].classList.toggle("active");
         }
     }
     if(event.keyCode === 37) {
         if(effect.includes("slide")) {
             imageTrack.style.transform = `translateX(${goLeft()}px)`;
             imageTrack.style.transition = `transform 0.8s ease 0s`;
+            dots[imageIndex].classList.toggle("active");
             imageIndex -= 1;
+            dots[imageIndex].classList.toggle("active");
         } else if(effect.includes("fade")) {
             if(imageIndex > 0) {
                 images[imageIndex].classList.toggle("slider__image--fade");
                 window.setTimeout(function () {
                     imageTrack.style.transform = `translateX(${goLeft()}px)`;
                     imageTrack.style.transition = `transform 0s ease 0s`;
+                    dots[imageIndex].classList.toggle("active");
                     imageIndex -= 1;
+                    currentDot -= 1;
                     images[imageIndex].classList.toggle("slider__image--fade");
+                    dots[imageIndex].classList.toggle("active");
                 }, 1800);
             }
         } else {
             imageTrack.style.transform = `translateX(${goLeft()}px)`;
             imageTrack.style.transition = `transform 0s ease 0s`;
+            dots[imageIndex].classList.toggle("active");
             imageIndex -= 1;
+            dots[imageIndex].classList.toggle("active");
         }
     }
 });
 
-// document.querySelectorAll(".slider__dot").forEach((dot, index) => {
-    
-//     dot.addEventListener('click', function () {
-//     });
-// });
+document.querySelectorAll(".slider__dot").forEach((dot, index) => {
+    dot.addEventListener('click', function () {
+        console.log(dot, index);
+        switch(index) {
+            case 0:
+                dots[imageIndex].classList.toggle("active");
+                imageIndex = 0;
+                dot.classList.toggle("active");
+                if(effect.includes("slide")) {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0.8s ease 0s`;
+                } else if (effect.includes("fade")) {
+                    images[currentDot].classList.toggle("slider__image--fade");
+                    window.setTimeout(function () {
+                        imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                        imageTrack.style.transition = `transform 0s ease 0s`;
+                        images[imageIndex].classList.toggle("slider__image--fade");
+                    }, 1800);
+                } else {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0s ease 0s`;
+                }
+                currentDot = 0;
+                break;
+            case 1:
+                dots[imageIndex].classList.toggle("active");
+                imageIndex = 1;
+                dot.classList.toggle("active");
+                if(effect.includes("slide")) {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0.8s ease 0s`;
+                } else if (effect.includes("fade")) {
+                    console.log(currentDot)
+                    images[currentDot].classList.toggle("slider__image--fade");
+                    window.setTimeout(function () {
+                        imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                        imageTrack.style.transition = `transform 0s ease 0s`;
+                        images[imageIndex].classList.toggle("slider__image--fade");
+                    }, 1800);
+                } else {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0s ease 0s`;
+                }
+                currentDot = 1;
+                break;
+            case 2:
+                dots[imageIndex].classList.toggle("active");
+                imageIndex = 2;
+                dot.classList.toggle("active");
+                if(effect.includes("slide")) {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0.8s ease 0s`;
+                } else if (effect.includes("fade")) {
+                    images[currentDot].classList.toggle("slider__image--fade");
+                    window.setTimeout(function () {
+                        imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                        imageTrack.style.transition = `transform 0s ease 0s`;
+                        images[imageIndex].classList.toggle("slider__image--fade");
+                    }, 1800);
+                } else {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0s ease 0s`;   
+                }
+                currentDot = 2;
+                break;
+            case 3:
+                dots[imageIndex].classList.toggle("active");
+                imageIndex = 3;
+                dot.classList.toggle("active");
+                if(effect.includes("slide")) {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0.8s ease 0s`;
+                } else if (effect.includes("fade")) {
+                    images[currentDot].classList.toggle("slider__image--fade");
+                    window.setTimeout(function () {
+                        imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                        imageTrack.style.transition = `transform 0s ease 0s`;
+                        images[imageIndex].classList.toggle("slider__image--fade");
+                    }, 1800);
+                } else {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0s ease 0s`;
+                }
+                currentDot = 3;
+                break;
+            case 4:
+                dots[imageIndex].classList.toggle("active");
+                imageIndex = 4;
+                dot.classList.toggle("active");
+                if(effect.includes("slide")) {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0.8s ease 0s`;
+                } else if (effect.includes("fade")) {
+                    images[currentDot].classList.toggle("slider__image--fade");
+                    window.setTimeout(function () {
+                        imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                        imageTrack.style.transition = `transform 0s ease 0s`;
+                        images[imageIndex].classList.toggle("slider__image--fade");
+                    }, 1800);
+                } else {
+                    imageTrack.style.transform = `translateX(${moveImage()}px)`;
+                    imageTrack.style.transition = `transform 0s ease 0s`;
+                }
+                currentDot = 4;
+                break;
+        }
+    });
+});
+
+function moveImage() {
+    switch(imageIndex) {
+        case 0:
+            return currentPosX = 0;
+        case 1:
+            return currentPosX = -500;
+        case 2:
+            return currentPosX = -1000;
+        case 3:
+            return currentPosX = -1500;
+        case 4: 
+            return currentPosX = -2000;
+    }
+}
